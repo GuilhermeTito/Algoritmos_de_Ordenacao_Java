@@ -1,22 +1,25 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main
 {
     public static void main(String[] args)
     {
+        int[] vetor = new int[20];
         while(true)
         {
+            vetor = gerarVetor(vetor);
             menu();
             int op = entradaInteira();
             switch (op) {
-                case 1 -> insertionSort();
-                case 2 -> selectionSort();
-                case 3 -> bubbleSort();
-                case 4 -> combSort();
-                case 5 -> quickSort();
-                case 6 -> mergeSort();
-                case 7 -> heapSort();
-                case 8 -> shellSort();
+                case 1 -> insertionSort(vetor);
+                case 2 -> selectionSort(vetor);
+                case 3 -> bubbleSort(vetor);
+                case 4 -> combSort(vetor);
+                case 5 -> quickSort(vetor);
+                case 6 -> mergeSort(vetor);
+                case 7 -> heapSort(vetor);
+                case 8 -> shellSort(vetor);
                 case 9 -> System.exit(0);
                 default -> System.out.println("Inválido. Digite novamente.");
             }
@@ -35,6 +38,23 @@ public class Main
         System.out.println("7 - Heap sort");
         System.out.println("8 - Shell sort");
         System.out.println("9 - Sair");
+    }
+
+    public static int[] gerarVetor(int[] vetor)
+    {
+        Random gerador = new Random();
+        for(int i = 0; i < vetor.length; i++)
+        {
+            vetor[i] = gerador.nextInt(100);
+        }
+        return vetor;
+    }
+
+    public static void imprimirVetor(int[] vetor)
+    {
+        for (int i : vetor) {
+            System.out.println("[" + i + "]");
+        }
     }
 
     public static int entradaInteira()
@@ -56,42 +76,56 @@ public class Main
         return leitor.nextInt();
     }
 
-    public static void insertionSort()
+    public static void insertionSort(int[] vetor)
     {
         System.out.println("Insertion Sort");
     }
 
-    public static void selectionSort()
+    public static void selectionSort(int[] vetor)
     {
-        System.out.println("Insertion Sort");
+        System.out.println("Selection Sort");
     }
 
-    public static void bubbleSort()
+    public static void bubbleSort(int[] vetor)
     {
-        System.out.println("Insertion Sort");
+        System.out.println("Bubble Sort");
+        for(int i = 0; i < vetor.length - 1; i++)
+        {
+            for(int j = i + 1; j < vetor.length; j++)
+            {
+                if(vetor[j] < vetor[i])
+                {
+                    int aux = vetor[i];
+                    vetor[i] = vetor[j];
+                    vetor[j] = aux;
+                }
+            }
+        }
+        imprimirVetor(vetor);
     }
 
-    public static void combSort()
+    public static void combSort(int[] vetor)
     {
-        System.out.println("Insertion Sort");
+        System.out.println("Comb Sort");
     }
 
-    public static void quickSort()
+    public static void quickSort(int[] vetor)
     {
-        System.out.println("Insertion Sort");
-    }
-    public static void mergeSort()
-    {
-        System.out.println("Insertion Sort");
+        System.out.println("Quick Sort");
     }
 
-    public static void heapSort()
+    public static void mergeSort(int[] vetor)
     {
-        System.out.println("Insertion Sort");
+        System.out.println("Merge Sort");
     }
 
-    public static void shellSort()
+    public static void heapSort(int[] vetor)
     {
-        System.out.println("Insertion Sort");
+        System.out.println("Heap Sort");
+    }
+
+    public static void shellSort(int[] vetor)
+    {
+        System.out.println("Shell Sort");
     }
 }
